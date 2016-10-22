@@ -1,0 +1,36 @@
+﻿@model IEnumerable<EditableGridExample.Models.Event>
+@using NonFactors.Mvc.Grid;
+
+@{ 
+    ViewBag.Title = "Events";
+}
+
+<h2>Events</h2>
+
+@(Html.Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(c => c.ID).Titled("Event ID");
+        columns.Add(c => c.contactID).Titled("Contact ID");
+        columns.Add(c => c.description).Titled("Description");
+        columns.Add(c => c.typeID).Titled("Type ID");
+        columns.Add(c => c.altID).Titled("Alt ID");
+        columns.Add(c => c.active).Titled("Active");
+        columns.Add(c => c.createdDate).Titled("Created Date");
+        columns.Add(c => c.updatedDate).Titled("Modified Date");
+        columns.Add(c => c.updatedBy).Titled("Updated By");
+    })
+    .Filterable()
+    .Sortable()
+    .Pageable()
+)
+
+@section scripts {
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.mvc-grid').mvcgrid();
+    });
+</script>
+}
+
+
